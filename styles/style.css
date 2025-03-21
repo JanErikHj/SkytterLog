@@ -1,0 +1,71 @@
+:root {
+    --text1: #D9E0EE;       /* Light grayish lavender */
+    --text2: #C6A0F6;       /* Light purple */
+    --background1: #1E1E2E; /* Very dark gray */
+    --background2: #2E2E3E; /* Dark grayish purple */
+    --accent1: #F2D3A1;     /* Light yellow */
+    --accent2: #F8C8D1;     /* Soft pink */
+    --accent3: #B7D6F2;     /* Light blue */
+}
+
+body {
+    background-color: var(--background1);
+    color: var(--text1);
+    font-family: 'Arial', sans-serif;
+}
+
+
+h1 {
+    text-align: center;
+    font-size: 3rem;
+    color: var(--text2);
+}
+h2 {
+    color: var(--text1);
+}
+
+
+button {
+    background-color: var(--accent3);
+    color: var(--background2);
+    border: none;
+    padding: 10px 20px;
+    margin: 0px 0px 10px 0px;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: var(--accent2);
+}
+
+header, footer {
+    background-color: var(--background2);
+    color: var(--text1);
+    padding: 20px;
+}
+
+
+
+
+
+.header-image {
+    width: 165px;
+    display: block;
+    margin-left: auto;
+    margin-right: 20px;
+    
+
+}
+.top-stats {
+    background-color: var(--background2);
+    display: flex;
+    
+    
+}
+.top-stats--image {
+    width: 50%;
+}
+.top-stats--text {
+    flex-grow: 1;
+    color: var(--text1);
+}
