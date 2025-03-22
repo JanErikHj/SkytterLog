@@ -1,72 +1,77 @@
 :root {
-    --text1: #D9E0EE;       /* Light grayish lavender */
-    --text2: #C6A0F6;       /* Light purple */
-    --background1: #1E1E2E; /* Very dark gray */
-    --background2: #2E2E3E; /* Dark grayish purple */
-    --accent1: #F2D3A1;     /* Light yellow */
-    --accent2: #F8C8D1;     /* Soft pink */
-    --accent3: #B7D6F2;     /* Light blue */
+  --text1: #d9e0ee; /* Light grayish lavender */
+  --text2: #c6a0f6; /* Light purple */
+  --background1: #1e1e2e; /* Very dark gray */
+  --background2: #2e2e3e; /* Dark grayish purple */
+  --accent1: #f2d3a1; /* Light yellow */
+  --accent2: #f8c8d1; /* Soft pink */
+  --accent3: #b7d6f2; /* Light blue */
 }
 
 body {
-    background-color: var(--background1);
-    color: var(--text1);
-    font-family: 'Arial', sans-serif;
+  background-color: var(--background1);
+  color: var(--text1);
+  font-family: 'Arial', sans-serif;
 }
-
 
 h1 {
-    text-align: center;
-    font-size: 3rem;
-    color: var(--text2);
+  text-align: center;
+  font-size: 3rem;
+  color: var(--text2);
 }
 h2 {
-    color: var(--text1);
+  color: var(--text1);
 }
 
-
 button {
-    background-color: var(--accent3);
-    color: var(--background2);
-    border: none;
-    padding: 10px 20px;
-    margin: 0px 0px 10px 0px;
-    cursor: pointer;
-    border-radius: 30cap;
+  background-color: var(--text1);
+  color: var(--background2);
+  border: none;
+  padding: 10px 20px;
+  margin: 10px 0px 10px 0px;
+  cursor: pointer;
+  border-radius: 10px;
+  font-size: 1rem;
+  font-weight: bold;
 }
 
 button:hover {
-    background-color: var(--accent2);
+  background-color: var(--accent3);
 }
 
-header, footer {
-    background-color: var(--background2);
-    color: var(--text1);
-    padding: 20px;
+header,
+footer {
+  background-color: var(--background2);
+  color: var(--text1);
+  padding: 20px;
 }
 
+.container-nav {
+  display: flex;
+  gap: 20px;
 
-
-
-
-.header-image {
-    width: 165px;
-    display: block;
-    margin-left: auto;
-    margin-right: 20px;
-    
-
+  background-color: var(--text1);
 }
-.top-stats {
-    background-color: var(--background2);
-    display: flex;
-    
-    
+.left-nav {
+  width: 3%;
+  padding-left: 10px;
 }
-.top-stats--image {
-    width: 50%;
+.center-nav {
+  display: inline-flex;
+  gap: 10px;
+  align-content: center;
+  width: 90%;
 }
-.top-stats--text {
-    flex-grow: 1;
-    color: var(--text1);
+.right-nav {
+  width: 5%;
+
+  margin-right: 10px;
+}
+.img-nav {
+  height: 45px;
+  margin: 5px 0px 0px 0px;
+}
+.img-home {
+  height: 50px;
+  border-radius: 50%;
 }
