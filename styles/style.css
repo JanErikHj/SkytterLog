@@ -8,10 +8,17 @@
   --accent3: #b7d6f2; /* Light blue */
 }
 
+.fira-code-header {
+  font-family: 'Fira Code', monospace;
+  font-optical-sizing: auto;
+  font-weight: 400;
+  font-style: normal;
+}
+
 body {
   background-color: var(--background1);
   color: var(--text1);
-  font-family: 'Arial', sans-serif;
+  font-family: 'Fira Code', monospace;
 }
 
 h1 {
@@ -49,29 +56,25 @@ footer {
 .container-nav {
   display: flex;
   gap: 20px;
-
   background-color: var(--text1);
 }
-.left-nav {
-  width: 3%;
-  padding-left: 10px;
-}
+
 .center-nav {
-  display: inline-flex;
+  display: flex;
   gap: 10px;
   align-content: center;
-  width: 90%;
+  width: 95%;
 }
 .right-nav {
-  width: 5%;
-
-  margin-right: 10px;
+  display: flex;
+  width: 3%;
+  align-items: center;
 }
 .img-nav {
-  height: 45px;
-  margin: 5px 0px 0px 0px;
+  height: 55px;
+  margin: 15px 0px 0px 0px;
 }
 .img-home {
-  height: 50px;
+  height: 55px;
   border-radius: 50%;
 }
