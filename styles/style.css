@@ -6,3 +6,27 @@ h1 {
 table td {
   font-family: monospace;
 }
+
+.stevne-header {
+  font-size: 40px;
+}
+.stevne-head-col {
+  background-color: rgb(1, 10, 44);
+  color: aliceblue;
+}
+.stevne-resultat {
+  font-family: monospace;
+  font-size: 20px;
+  background-color: rgb(214, 216, 217);
+}
+.serie-no {
+  background-color: rgb(144, 142, 145);
+}
+.serie-esn {
+  background-color: rgb(138, 206, 206);
+}
+.stevne-resultat-header {
+  background-color: rgb(0, 40, 54);
+  color: aliceblue;
+  font-size: 25px;
+}
