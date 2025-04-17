@@ -36,10 +36,10 @@ const calculateSum = function (serier) {
   const s1 = serier.s1.reduce(function (acc, val) {
     return acc + val;
   }, 0);
-  const s2 = serier.s1.reduce(function (acc, val) {
+  const s2 = serier.s2.reduce(function (acc, val) {
     return acc + val;
   }, 0);
-  const s3 = serier.s1.reduce(function (acc, val) {
+  const s3 = serier.s3.reduce(function (acc, val) {
     return acc + val;
   }, 0);
   return s1 + s2 + s3;
@@ -52,6 +52,13 @@ const calculateSeriesTotal = function (serie) {
 const calculateESN = function (serier) {
   const total = calculateSum(serier);
   return total / 15;
+};
+
+const calculateSerieESN = function (serie) {
+  const total = serie.reduce(function (acc, val) {
+    return acc + val;
+  }, 0);
+  return total / serie.length;
 };
 
 const seriesToString = function (series) {
@@ -74,49 +81,63 @@ const displayTreninger = function () {
     <tr>
       <th scope="col">Dato</th>
       <th scope="col">Sted</th>
+      <th scope="col"></th>
 
       <th scope="col">Total Sum</th>
       <th scope="col">ESN</th>
     </tr>
-  </thead><tbody class="table-group-divider">`;
+  </thead><tbody class="table-group-divider"><p class="separator"></p>`;
 
   for (let trening of treninger) {
     let data = `
-    <tr>
+    
+    <tr class="table-dark">
       <th scope="row">${trening.dato}</th>
       <td>${trening.sted}</td>
-
-      
-      
+      <td></td>      
       <td>${calculateSum(trening.serier).toFixed(3)}</td>
       <td>${calculateESN(trening.serier).toFixed(3)}</td>
+      
     </tr>
     <tr>
-      <td colspan="4">
-        <table class="table mb-0">
+      <td colspan="5">
+      
+        <table class="table mb-0 table-light table-striped">
         <thead>
         <th scope="col">Serie</th>
         <th scope="col">Treff</th>
         <th scope="col">Sum</th>
+        <th scope="col"></th>
+        
+        <th scope="col">ESN</th>
 
         </thead>
+        <tbody class="table-group-divider">
         <tr>
         <td>Serie 1</td>
         <td>${seriesToString(trening.serier.s1)}</td>
         <td>${calculateSeriesTotal(trening.serier.s1).toFixed(3)}</td>
+        <td></td>
+        <td>${calculateSerieESN(trening.serier.s1).toFixed(3)}</td>
         </tr>
         <tr>
         <td>Serie 2</td>
         <td>${seriesToString(trening.serier.s2)}</td>
         <td>${calculateSeriesTotal(trening.serier.s2).toFixed(3)}</td>
+        <td></td>
+        <td>${calculateSerieESN(trening.serier.s2).toFixed(3)}</td>
         </tr>
         <tr>
         <td>Serie 3</td>
         <td>${seriesToString(trening.serier.s3)}</td>
         <td>${calculateSeriesTotal(trening.serier.s3).toFixed(3)}</td>
+        <td></td>
+        <td>${calculateSerieESN(trening.serier.s3).toFixed(3)}</td>
         </tr>
+        </tbody>
           
         </table>
+        <p class="separator"></p>
       </td>
     </tr>`;
     html += data;
