@@ -44,7 +44,7 @@ stevneContainer.innerHTML = '';
 let htmlText = ``;
 
 const calculateESN = function (series) {
-  return series.reduce((acc, current) => acc + current / series.length, 0);
+  return series.reduce((acc, current) => acc + (current / series.length), 0);
 };
 
 const generateSerieHtml = function (serier) {
@@ -60,7 +60,7 @@ const generateSerieHtml = function (serier) {
         <div class="col stevne-serie">${serie[2]}</div>
         <div class="col stevne-serie">${serie[3]}</div>
         <div class="col stevne-serie">${serie[4]}</div>
-        <div class="col serie-esn">1${currentESN}</div>
+        <div class="col serie-esn">${currentESN.toFixed(2)}</div>
       </div>
 
         `;

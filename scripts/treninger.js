@@ -90,7 +90,7 @@ const displayTreninger = function () {
 
   for (let trening of treninger) {
     let data = `
-    
+
     <tr class="table-dark">
       <th scope="row">${trening.dato}</th>
       <td>${trening.sted}</td>
