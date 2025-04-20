@@ -31,6 +31,8 @@ const treninger = [
 ];
 
 const displayDiv = document.querySelector('.display-treninger');
+let htmlText = '';
+let count = 0;
 
 const calculateSum = function (serier) {
   const s1 = serier.s1.reduce(function (acc, val) {
@@ -73,78 +75,88 @@ const seriesToString = function (series) {
   return str;
 };
 
-const displayTreninger = function () {
-  displayDiv.innerHTML = '';
-  let html = '';
-  html += '<table class="table table-hover"><caption>Treninger 2025</caption>';
-  html += ` <thead>
-    <tr>
-      <th scope="col">Dato</th>
-      <th scope="col">Sted</th>
-      <th scope="col"></th>
-
-      <th scope="col">Total Sum</th>
-      <th scope="col">ESN</th>
-    </tr>
-  </thead><tbody class="table-group-divider"><p class="separator"></p>`;
-
+const displayTreninger = function (treninger) {
   for (let trening of treninger) {
-    let data = `
+    const header = `Trening ${trening.dato} - Sted: ${
+      trening.sted
+    } - Sum: ${calculateSum(trening.serier).toFixed(2)} - ESN: ${calculateESN(
+      trening.serier
+    ).toFixed(3)}`;
+    htmlText += `
+    <div class="accordion" id="accordionFlushExample${count}">
+  <div class="accordion-item">
+  <h2 class="header-style">
+    <button
+      class="accordion-button collapsed"
+      type="button"
+      data-bs-toggle="collapse"
+      data-bs-target="#flush-collapse${count}"
+      aria-expanded="false"
+      aria-controls="flush-collapse${count}"
+    >
+      ${header}
+    </button>
+  </h2>
+  <div
+    id="flush-collapse${count}"
+    class="accordion-collapse collapse"
+    data-bs-parent="#accordionFlushExample${count}"
+  >
+    <div class="accordion-body">
+      <table class="table table-hover">
+      <thead>
+    <tr>
+      <th scope="col">Serie</th>
+      <th scope="col">Treff 1</th>
+      <th scope="col">Treff 2</th>
+      <th scope="col">Treff 3</th>
+      <th scope="col">Treff 4</th>
+      <th scope="col">Treff 5</th>
+      <th scope="col">Sum</th>
+      <th scope="col">ESN</th>
 
-    <tr class="table-dark">
-      <th scope="row">${trening.dato}</th>
-      <td>${trening.sted}</td>
-      <td></td>      
-      <td>${calculateSum(trening.serier).toFixed(3)}</td>
-      <td>${calculateESN(trening.serier).toFixed(3)}</td>
-      
+    </tr>
+  </thead><tbody class="table-group-divider">
+  <tr>
+    <td>Serie 1</td>
+    <td>${trening.serier.s1[0]}</td>
+    <td>${trening.serier.s1[1]}</td>
+    <td>${trening.serier.s1[2]}</td>
+    <td>${trening.serier.s1[3]}</td>
+    <td>${trening.serier.s1[4]}</td>
+    <td>${calculateSeriesTotal(trening.serier.s1).toFixed(2)}</td>
+    <td>${calculateSerieESN(trening.serier.s1).toFixed(3)}</td>
     </tr>
     <tr>
-      <td colspan="5">
-      
-        <table class="table mb-0 table-light table-striped">
-        <thead>
-        <th scope="col">Serie</th>
-        <th scope="col">Treff</th>
-        <th scope="col">Sum</th>
-        <th scope="col"></th>
-        
-        <th scope="col">ESN</th>
-
-        </thead>
-        <tbody class="table-group-divider">
-        <tr>
-        <td>Serie 1</td>
-        <td>${seriesToString(trening.serier.s1)}</td>
-        <td>${calculateSeriesTotal(trening.serier.s1).toFixed(3)}</td>
-        <td></td>
-        <td>${calculateSerieESN(trening.serier.s1).toFixed(3)}</td>
-        </tr>
-        <tr>
-        <td>Serie 2</td>
-        <td>${seriesToString(trening.serier.s2)}</td>
-        <td>${calculateSeriesTotal(trening.serier.s2).toFixed(3)}</td>
-        <td></td>
-        <td>${calculateSerieESN(trening.serier.s2).toFixed(3)}</td>
-        </tr>
-        <tr>
-        <td>Serie 3</td>
-        <td>${seriesToString(trening.serier.s3)}</td>
-        <td>${calculateSeriesTotal(trening.serier.s3).toFixed(3)}</td>
-        <td></td>
-        <td>${calculateSerieESN(trening.serier.s3).toFixed(3)}</td>
-        </tr>
-        </tbody>
-          
-        </table>
-        <p class="separator"></p>
-      </td>
-    </tr>`;
-    html += data;
+    <td>Serie 2</td>
+    <td>${trening.serier.s2[0]}</td>
+    <td>${trening.serier.s2[1]}</td>
+    <td>${trening.serier.s2[2]}</td>
+    <td>${trening.serier.s2[3]}</td>
+    <td>${trening.serier.s2[4]}</td>
+    <td>${calculateSeriesTotal(trening.serier.s2).toFixed(2)}</td>
+    <td>${calculateSerieESN(trening.serier.s2).toFixed(3)}</td>
+    </tr>
+    <tr>
+    <td>Serie 3</td>
+    <td>${trening.serier.s3[0]}</td>
+    <td>${trening.serier.s3[1]}</td>
+    <td>${trening.serier.s3[2]}</td>
+    <td>${trening.serier.s3[3]}</td>
+    <td>${trening.serier.s3[4]}</td>
+    <td>${calculateSeriesTotal(trening.serier.s3).toFixed(2)}</td>
+    <td>${calculateSerieESN(trening.serier.s3).toFixed(3)}</td>
+    </tr>
+    </tbody>
+    </table>
+    </div>
+  </div>
+</div>
+</div>
+  `;
+    count++;
   }
-
-  html += '</tbody></table>';
-  displayDiv.innerHTML = html;
+  displayDiv.innerHTML += htmlText;
 };
 const calculateESNTotal = function (treninger) {
   let esnTotal = 0;
@@ -163,6 +175,6 @@ const displayESN = function (shooterESN) {
   )}`;
 };
 
-displayTreninger();
+displayTreninger(treninger);
 const shooterESN = calculateESNTotal(treninger);
 displayESN(shooterESN);
