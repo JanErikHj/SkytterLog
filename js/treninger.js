@@ -1,9 +1,15 @@
-'use strict';
+"use strict";
+
+import {
+  accordianHeader,
+  accordianBody,
+  accordianFooter,
+} from "./modules/accordion.js";
 
 const treninger = [
   {
-    dato: '01.01.2025',
-    sted: 'Ålesund',
+    dato: "01.01.2025",
+    sted: "Ålesund",
     serier: {
       s1: [9, 8, 9.9, 10.2, 10.6],
       s2: [7.4, 8, 10.7, 10.2, 10.6],
@@ -11,8 +17,8 @@ const treninger = [
     },
   },
   {
-    dato: '08.01.2025',
-    sted: 'Langevåg',
+    dato: "08.01.2025",
+    sted: "Langevåg",
     serier: {
       s1: [9, 7, 9.8, 10.2, 10.6],
       s2: [7.4, 8, 10.2, 10.2, 10.6],
@@ -20,8 +26,8 @@ const treninger = [
     },
   },
   {
-    dato: '05.01.2025',
-    sted: 'Ålesund',
+    dato: "05.01.2025",
+    sted: "Ålesund",
     serier: {
       s1: [9, 9.5, 9.9, 10.2, 10.6],
       s2: [7.4, 9.5, 10.7, 10.2, 10.6],
@@ -30,8 +36,8 @@ const treninger = [
   },
 ];
 
-const displayDiv = document.querySelector('.display-treninger');
-let htmlText = '';
+const displayDiv = document.querySelector(".display-treninger");
+let htmlText = "";
 let count = 0;
 
 const calculateSum = function (serier) {
@@ -64,13 +70,13 @@ const calculateSerieESN = function (serie) {
 };
 
 const seriesToString = function (series) {
-  let str = '';
+  let str = "";
   const seriesS = series.toSorted(function (a, b) {
     return a - b;
   });
   for (let item of seriesS) {
     let hit = item.toFixed(1);
-    str += String(hit).padStart(5, '\xa0');
+    str += String(hit).padStart(5, "\xa0");
   }
   return str;
 };
@@ -103,7 +109,7 @@ const displayTreninger = function (treninger) {
     data-bs-parent="#accordionFlushExample${count}"
   >
     <div class="accordion-body">
-      <table class="table table-hover">
+      <table class="table table-hover table-striped">
       <thead>
     <tr>
       <th scope="col">Serie</th>
@@ -118,34 +124,46 @@ const displayTreninger = function (treninger) {
     </tr>
   </thead><tbody class="table-group-divider">
   <tr>
-    <td>Serie 1</td>
+    <td class="table-success">Serie 1</td>
     <td>${trening.serier.s1[0]}</td>
     <td>${trening.serier.s1[1]}</td>
     <td>${trening.serier.s1[2]}</td>
     <td>${trening.serier.s1[3]}</td>
     <td>${trening.serier.s1[4]}</td>
-    <td>${calculateSeriesTotal(trening.serier.s1).toFixed(2)}</td>
-    <td>${calculateSerieESN(trening.serier.s1).toFixed(3)}</td>
+    <td class="table-primary">${calculateSeriesTotal(trening.serier.s1).toFixed(
+      2
+    )}</td>
+    <td class="table-primary">${calculateSerieESN(trening.serier.s1).toFixed(
+      3
+    )}</td>
     </tr>
     <tr>
-    <td>Serie 2</td>
+    <td class="table-success">Serie 2</td>
     <td>${trening.serier.s2[0]}</td>
     <td>${trening.serier.s2[1]}</td>
     <td>${trening.serier.s2[2]}</td>
     <td>${trening.serier.s2[3]}</td>
     <td>${trening.serier.s2[4]}</td>
-    <td>${calculateSeriesTotal(trening.serier.s2).toFixed(2)}</td>
-    <td>${calculateSerieESN(trening.serier.s2).toFixed(3)}</td>
+    <td class="table-primary">${calculateSeriesTotal(trening.serier.s2).toFixed(
+      2
+    )}</td>
+    <td class="table-primary">${calculateSerieESN(trening.serier.s2).toFixed(
+      3
+    )}</td>
     </tr>
     <tr>
-    <td>Serie 3</td>
+    <td class="table-success">Serie 3</td>
     <td>${trening.serier.s3[0]}</td>
     <td>${trening.serier.s3[1]}</td>
     <td>${trening.serier.s3[2]}</td>
     <td>${trening.serier.s3[3]}</td>
     <td>${trening.serier.s3[4]}</td>
-    <td>${calculateSeriesTotal(trening.serier.s3).toFixed(2)}</td>
-    <td>${calculateSerieESN(trening.serier.s3).toFixed(3)}</td>
+    <td class="table-primary">${calculateSeriesTotal(trening.serier.s3).toFixed(
+      2
+    )}</td>
+    <td class="table-primary">${calculateSerieESN(trening.serier.s3).toFixed(
+      3
+    )}</td>
     </tr>
     </tbody>
     </table>
@@ -169,7 +187,7 @@ const calculateESNTotal = function (treninger) {
 };
 const displayESN = function (shooterESN) {
   document.querySelector(
-    '#esn-header'
+    "#esn-header"
   ).textContent = `Enkeltskudd Nøyaktighet alle treninger: ${shooterESN.toFixed(
     3
   )}`;
